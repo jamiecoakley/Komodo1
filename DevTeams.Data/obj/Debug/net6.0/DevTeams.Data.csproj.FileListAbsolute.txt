@@ -1,0 +1,12 @@
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\bin\Debug\net6.0\DevTeams.Data.deps.json
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\bin\Debug\net6.0\DevTeams.Data.dll
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\bin\Debug\net6.0\DevTeams.Data.pdb
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\obj\Debug\net6.0\DevTeams.Data.csproj.AssemblyReference.cache
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\obj\Debug\net6.0\DevTeams.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\obj\Debug\net6.0\DevTeams.Data.AssemblyInfoInputs.cache
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\obj\Debug\net6.0\DevTeams.Data.AssemblyInfo.cs
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\obj\Debug\net6.0\DevTeams.Data.csproj.CoreCompileInputs.cache
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\obj\Debug\net6.0\DevTeams.Data.dll
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\obj\Debug\net6.0\refint\DevTeams.Data.dll
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\obj\Debug\net6.0\DevTeams.Data.pdb
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Data\obj\Debug\net6.0\ref\DevTeams.Data.dll

@@ -1,0 +1,15 @@
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\bin\Debug\net6.0\DevTeams.Repositories.deps.json
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\bin\Debug\net6.0\DevTeams.Repositories.dll
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\bin\Debug\net6.0\DevTeams.Repositories.pdb
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\bin\Debug\net6.0\DevTeams.Data.dll
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\bin\Debug\net6.0\DevTeams.Data.pdb
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\obj\Debug\net6.0\DevTeams.Repositories.csproj.AssemblyReference.cache
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\obj\Debug\net6.0\DevTeams.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\obj\Debug\net6.0\DevTeams.Repositories.AssemblyInfoInputs.cache
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\obj\Debug\net6.0\DevTeams.Repositories.AssemblyInfo.cs
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\obj\Debug\net6.0\DevTeams.Repositories.csproj.CoreCompileInputs.cache
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\obj\Debug\net6.0\DevTeams.Repositories.csproj.CopyComplete
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\obj\Debug\net6.0\DevTeams.Repositories.dll
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\obj\Debug\net6.0\refint\DevTeams.Repositories.dll
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\obj\Debug\net6.0\DevTeams.Repositories.pdb
+C:\Users\jamie\OneDrive\Desktop\EFA160SD\DevTeamsProject\DevTeams.Repositories\obj\Debug\net6.0\ref\DevTeams.Repositories.dll

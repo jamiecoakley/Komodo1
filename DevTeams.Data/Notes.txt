@@ -1,0 +1,15 @@
+Developer CRUD:
+create a new Developer
+devTeam ID to null, method to be able to change it in order to assign to a devTeam
+add multiple devs to a team
+
+
+DevTeam CRUD
+Create a new DevTeam
+Create a new DevTeam by naming it as a string and automatically assign an int ID#
+
+
+Challenge 1:
+if (PluralSight = null) cw (those developers)
+
+Challenge 2: Add multiple developers to a team at once
