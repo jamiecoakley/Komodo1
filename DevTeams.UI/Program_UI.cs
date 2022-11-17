@@ -35,7 +35,7 @@ public class Program_UI
                     DevTeamDirectory();
                     break;
                 case "3":
-                    // 
+                    GetPluralsightReport();
                     break;
                 case "0":
                     isRunning = false;
@@ -80,7 +80,7 @@ public class Program_UI
                 SeeAllDevs();
                 break;
             case "5":
-                //
+                AddDeveloper();
                 break;
             case "0":
                 Console.Clear();
@@ -107,10 +107,10 @@ public class Program_UI
         switch(Input2)
         {
             case "1":
-                //
+                SearchTeamByName();
                 break;
             case "2":
-                //
+                SearchTeamByID();
                 break;
             case "3":
                 SeeAllDevTeams();
@@ -122,6 +122,88 @@ public class Program_UI
                 System.Console.WriteLine("Invalid selction. Please try again!");
                 break;        
         }
+    }
+
+    public void SearchTeamByName()
+    {
+        Console.Clear();
+        System.Console.WriteLine("Enter the Team Name:");
+        string teamNameInput = Console.ReadLine();
+
+        DeveloperTeam team = _teamsRepo.GetTeamByName(teamNameInput);
+
+        if (team != null)
+        {
+            SeeTeamDetails(team);
+            System.Console.WriteLine("Changes: \n" +
+                        "1) Change Team Name\n" +
+                        "2) Delete Team\n" +
+                        "0) Back to Menu" );
+            string updateInput = Console.ReadLine();
+            switch(updateInput)
+            {
+                case "1":
+                    //
+                    break;
+                case "2":
+                    //
+                    break;
+                case "0":
+                    Console.Clear();
+                    return;           
+                default:
+                    System.Console.WriteLine("Incorrect input; please try again.");
+                    break;
+            }
+        }
+        else
+        {
+            System.Console.WriteLine("Can't find that team; try again!");
+        }
+        System.Console.WriteLine("Press any key to return to continue");
+        Console.ReadKey();
+    }
+
+    public void SearchTeamByID()
+    {
+        Console.Clear();
+        System.Console.WriteLine("Enter the Team ID");
+        int teamIDInput = int.Parse(Console.ReadLine());
+
+        DeveloperTeam team = _teamsRepo.GetTeamByID(teamIDInput);
+
+        if (team != null)
+        {
+            SeeTeamDetails(team);
+        }
+        else
+        System.Console.WriteLine("Can't find that team; try again!");
+    }
+
+    private void SeeTeamDetails(DeveloperTeam team)
+    {
+        System.Console.WriteLine($"Team ID: {team.TeamID}\n" +
+                                $" Name: {team.TeamName}\n");
+    }
+
+    //Case 3
+    private void GetPluralsightReport()
+    {
+        Console.Clear();
+        List<Developer> needsPs = _repo.GetAllDevelopersWithoutPluralsight();            
+        if (needsPs.Count > 0)
+        {
+            foreach (var dev in needsPs)
+            {
+                SeeAllDevsDetails(dev);
+            }
+        }
+        else
+        {
+            System.Console.WriteLine("Everyone's got their license!");
+        }
+        System.Console.WriteLine("Press any key to return to continue");
+        Console.ReadKey();
     }
 
 //Dev Directory Case 1
@@ -179,14 +261,39 @@ public class Program_UI
         if (developer != null)
         {
             SeeAllDevsDetails(developer);
+            System.Console.WriteLine("Changes: \n" +
+                        "1) Add Developer to a Team\n" +
+                        "2) Change Developer Name\n" +
+                        "3) Delete Developer\n" +
+                        "0) Back to Menu" );
+            
+            string updateInput = Console.ReadLine();
+            switch(updateInput)
+            {
+                case "1":
+                    //
+                    break;
+                case "2":
+                    //
+                    break;
+                case "3":
+                    //
+                    break;
+                case "0":
+                    Console.Clear();
+                    return;           
+                default:
+                    System.Console.WriteLine("Incorrect input; please try again.");
+                    break;
+            }
         }
         else
         {
             System.Console.WriteLine("Can't find the developer; try again!");
         }
-        System.Console.WriteLine("Press any key to return to continue");
-        Console.ReadKey();
     }
+
+    
 
 //Dev Directory Case 4
     private void SeeAllDevs()
@@ -209,35 +316,6 @@ public class Program_UI
     }
     
 
-//Dev Directory Case 123
-    private void AddDevToTeam(){
-        System.Console.WriteLine("Changes: \n" +
-                                "1) Add Developer to a Team\n" +
-                                "2) Change Developer First Name\n" + 
-                                "3) Change Developer Last Name\n" +
-                                "0) Back to Menu" );
-        string addInput = Console.ReadLine();
-
-        switch(addInput)
-        {
-            case "1":
-                //
-                break;
-            case "2":
-                //
-                break;
-            case "3":
-                //
-                break;
-            case "0":
-                //
-                break;            
-            default:
-                System.Console.WriteLine("Incorrect input; please try again.");
-                break;
-        }
-    }
-
         private void SeeAllDevsDetails(Developer dev)
     {
         System.Console.WriteLine($"Developer ID: {dev.ID}\n" +
@@ -248,7 +326,7 @@ public class Program_UI
     private void SeeAllDevTeams()
         {
             Console.Clear();
-            List<DeveloperTeams> listOfDevTeams = _teamsRepo.SeeAllTeams();
+            List<DeveloperTeam> listOfDevTeams = _teamsRepo.SeeAllTeams();
 
             if (listOfDevTeams.Count>0)
             {
@@ -263,19 +341,51 @@ public class Program_UI
             }
             Console.ReadKey();
         }
-    private void SeeAllDevTeamDetails(DeveloperTeams team)
+    private void SeeAllDevTeamDetails(DeveloperTeam team)
     {
         System.Console.WriteLine($"Developer Team ID: {team.TeamID}/n" +
                                 $"Developer Team Name: {team.TeamName}"
         );
     }
 
-    private void AddDeveloper(Developer developer)
+//Case 5
+    private void AddDeveloper() //cookie cutter!
     {
-        developer.Add(new Developer() {})
+        Console.Clear();
+        Developer dev = new Developer();
+        System.Console.WriteLine("Input Developer's first name.");
+        dev.FirstName = Console.ReadLine();
+        System.Console.WriteLine("Input Developer's last name.");
+        dev.LastName = Console.ReadLine();
+        System.Console.WriteLine("Does this developer have Pluralsight? (y/n)");
+        string userInput = Console.ReadLine();
+        if (userInput == "y".ToLower())
+        {
+            dev.HasPluralsight = true;
+        }
+        else //if user types anything but "y"
+        {
+            dev.HasPluralsight = false;
+        }
+
+        if (_repo.Add_Developer(dev))
+        {
+            System.Console.WriteLine("SUCCESS!");
+        }
+        else
+        {
+            System.Console.WriteLine("FAILURE.");
+        }
+        Console.ReadKey();
     }
 
-    private void AddDeveloperToTeam(Developer developer)
+    public void DeleteDeveloper()
+    {
+        Console.Clear();
+
+    }
+
+    private void AddDeveloperToTeam()
     {
 
     }
@@ -303,14 +413,14 @@ public class Program_UI
 
     private void SeedDeveloperTeamList()
     {
-        //List<Developer>dList1 = new List<Developer>(DeveloperTeams teamName, DeveloperTeams teamID);
-        DeveloperTeams devTeam1 = new DeveloperTeams(1000, "Team SouthPark", List<Developer>());
-        DeveloperTeams devTeam2 = new DeveloperTeams(2000, "Team FamilyGuy", List<Developer>());
-        DeveloperTeams devTeam3 = new DeveloperTeams(3000, "Team BobsBurgers", List<Developer>());
+        // //List<Developer>dList1 = new List<Developer>(DeveloperTeams teamName, DeveloperTeams teamID);
+        // DeveloperTeam devTeam1 = new DeveloperTeams(1000, "Team SouthPark", List<Developer>());
+        // DeveloperTeam devTeam2 = new DeveloperTeams(2000, "Team FamilyGuy", List<Developer>());
+        // DeveloperTeam devTeam3 = new DeveloperTeams(3000, "Team BobsBurgers", List<Developer>());
 
-        _teamsRepo.Add_Team(devTeam1);
-        _teamsRepo.Add_Team(devTeam2);
-        _teamsRepo.Add_Team(devTeam3);
+        // _teamsRepo.Add_Team(devTeam1);
+        // _teamsRepo.Add_Team(devTeam2);
+        // _teamsRepo.Add_Team(devTeam3);
 
     }
 }
