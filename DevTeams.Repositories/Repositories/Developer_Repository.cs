@@ -3,18 +3,18 @@ public class Developer_Repository
 {
     private readonly List<Developer> _devsDb = new List<Developer>();
 
-    private readonly List<DeveloperTeams>_devTeamsDb = new List<DeveloperTeams>();
+    private readonly List<DeveloperTeam> _devTeamsDb = new List<DeveloperTeam>();
 
     private int _count; //this will default to 0
 
-//CREATE
+    //CREATE
     public bool Add_Developer(Developer developer)
     {
         //check if content is null
         int startingCount = _devsDb.Count;
         _devsDb.Add(developer);
 
-        if(_devsDb.Count > startingCount)
+        if (_devsDb.Count > startingCount)
         {
             return true;
         }
@@ -25,9 +25,9 @@ public class Developer_Repository
 
     }
 
-    
 
-//READ (Get one by full name)
+
+    //READ (Get one by full name)
     public Developer GetDeveloperByFullName(string fullName)
     {
         foreach (var dev in _devsDb)
@@ -53,17 +53,18 @@ public class Developer_Repository
         return null;
     }
 
-        //(Get by first name)
+    //(Get by first name)
     public Developer GetDeveloperByFirstName(string firstName)
     {
-        foreach (var devLN in _devsDb)
-        {
-            if (devLN.FirstName == firstName)
-            {
-                return devLN;
-            }
-        }
-        return null;
+        // foreach (var devFN in _devsDb)
+        // {
+        //     if (devFN.FirstName == firstName)
+        //     {
+        //         return devFN;
+        //     }
+        // }
+        // return null;
+        return _devsDb.FirstOrDefault(devFN => devFN.FirstName == firstName); //If two developers have the same first name, it will just grab the first one instead of showing both of them.
     }
 
     //(Get by ID#)
@@ -80,9 +81,8 @@ public class Developer_Repository
     }
 
     //(Get by doesn't have PluralSight)
-    public Developer GetDeveloperByNoLicense(Developer hasPluralsight)
+    public Developer GetDeveloperByNoLicense(Developer developer)
     {
-        Developer HasPluralsight = hasPluralsight;
         foreach (var devPS in _devsDb)
         {
             if (devPS.HasPluralsight == false)
@@ -92,14 +92,38 @@ public class Developer_Repository
         }
         return null;
     }
-    
+
+    // VVV did all of ^^^
+    public List<Developer> GetDeveloperByNoLicenseLINQ()
+    {
+        return _devsDb.Where(dev => dev.HasPluralsight == false).ToList();
+    }
+
+    public List<Developer> GetAllDevelopersWithoutPluralsight()
+    {
+        List<Developer> devsWoPs = new List<Developer>();
+        //go into the database, 
+        //loop through everything; 
+        foreach (var dev in _devsDb)
+        {
+            //if no pluralsight, 
+            var devNoPS = GetDeveloperByNoLicense(dev);
+            //add to empty list
+            if (devNoPS != null)
+            {
+                devsWoPs.Add(devNoPS);
+            }
+        }
+        return devsWoPs;
+    }
+
     //(Get all developers)
     public List<Developer> GetAllDevelopers()
     {
         return _devsDb;
     }
 
-//UPDATE
+    //UPDATE
     public bool UpdateDeveloper(int originalInfo, Developer updatedInfo)
     {
         Developer oldInfo = GetDeveloperByID(originalInfo);
@@ -108,6 +132,7 @@ public class Developer_Repository
         {
             oldInfo.FirstName = updatedInfo.FirstName;
             oldInfo.LastName = updatedInfo.LastName;
+            oldInfo.HasPluralsight = updatedInfo.HasPluralsight;
             return true;
         }
         else
@@ -117,7 +142,7 @@ public class Developer_Repository
 
     }
 
-//DELETE
+    //DELETE
     public bool DeveloperGotFired(Developer developer)
     {
         bool firedDeveloper = _devsDb.Remove(developer);
