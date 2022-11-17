@@ -143,10 +143,10 @@ public class Program_UI
             switch(updateInput)
             {
                 case "1":
-                    //
+                    ChangeTeamName();
                     break;
                 case "2":
-                    //
+                    DeleteTeam();
                     break;
                 case "0":
                     Console.Clear();
@@ -162,6 +162,54 @@ public class Program_UI
         }
         System.Console.WriteLine("Press any key to return to continue");
         Console.ReadKey();
+    }
+
+    private void DeleteTeam()
+    {
+        Console.Clear();
+        System.Console.WriteLine("Confirm the ID of the team you want to delete.");
+
+        List<DeveloperTeam> teams = _teamsRepo.SeeAllTeams();
+
+        if (teams.Count() > 0)
+        {
+            int count = 0;
+
+            foreach (DeveloperTeam team in teams)
+            {
+                count++;
+            }
+
+            int deleteInput = int.Parse(Console.ReadLine());
+            int deleteTheRightTeam = deleteInput - 1;
+
+            if(deleteTheRightTeam >= 0 && deleteTheRightTeam < teams.Count) {
+                DeveloperTeam targetedForDeletion = teams[deleteTheRightTeam];
+
+                if (_teamsRepo.DeleteDeveloperTeam(targetedForDeletion))
+                {
+                    System.Console.WriteLine($"{targetedForDeletion.TeamName} is no more.");
+                }
+                else
+                {
+                    System.Console.WriteLine($"{targetedForDeletion.TeamName} was not deleted.");
+                }
+            }
+            else
+            {
+                System.Console.WriteLine("Invalid Team ID");
+            }
+        }
+        else
+        {
+            System.Console.WriteLine("There are no teams to delete!");
+        }
+        Console.ReadKey();
+    }
+
+    private void ChangeTeamName()
+    {
+
     }
 
     public void SearchTeamByID()
@@ -271,13 +319,13 @@ public class Program_UI
             switch(updateInput)
             {
                 case "1":
-                    //
+                    AddDeveloperToTeam();
                     break;
                 case "2":
-                    //
+                    UpdateDeveloperName();
                     break;
                 case "3":
-                    //
+                    DeleteDeveloper();
                     break;
                 case "0":
                     Console.Clear();
@@ -382,8 +430,48 @@ public class Program_UI
     public void DeleteDeveloper()
     {
         Console.Clear();
+        System.Console.WriteLine("Confirm the ID of the Developer you want to delete:");
 
+        List<Developer> devs = _repo.GetAllDevelopers();
+
+        if (devs.Count() > 0)
+        {
+            int count = 0;
+
+            foreach (Developer dev in devs)
+            {
+                count++;
+            }
+
+            int deleteInput = int.Parse(Console.ReadLine());
+            int deleteTheRightOne = deleteInput - 1;
+
+            if (deleteTheRightOne >= 0 && deleteTheRightOne < devs.Count)
+            {
+                Developer targetedForDeletion = devs[deleteTheRightOne];
+                if (_repo.DeveloperGotFired(targetedForDeletion))
+                {
+                    System.Console.WriteLine($"{targetedForDeletion.FullName} got fired.");
+                }
+                else
+                {
+                    System.Console.WriteLine($"You were unsuccessful in deleting {targetedForDeletion.FullName}.");
+                }
+            }
+            else
+            {
+                System.Console.WriteLine("That developer doesn't exist; try again!");
+            }
+        }
+        else
+        {
+            System.Console.WriteLine("Nothing here to delete!");
+        }
+        Console.ReadKey();
     }
+
+    public void UpdateDeveloperName()
+    {}
 
     private void AddDeveloperToTeam()
     {
